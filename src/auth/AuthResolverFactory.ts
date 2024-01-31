@@ -8,13 +8,12 @@ import { OnpremiseAddinOnly } from './resolvers/OnpremiseAddinOnly';
 import { AdfsCredentials } from './resolvers/AdfsCredentials';
 import { OnDemand } from './resolvers/OnDemand/OnDemand';
 import * as authOptions from './IAuthOptions';
-import { FileConfig } from './resolvers/FileConfig';
 
 export class AuthResolverFactory {
   public static resolve(siteUrl: string, options?: authOptions.IAuthOptions): IAuthResolver {
 
     if (!options) {
-      return new FileConfig(siteUrl);
+      throw new Error('Please provide config!')
     }
 
     if (authOptions.isTmgCredentialsOnpremise(siteUrl, options)) {
