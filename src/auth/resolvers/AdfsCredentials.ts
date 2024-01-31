@@ -1,7 +1,8 @@
 import { request } from './../../config';
 import * as url from 'url';
 import * as cookie from 'cookie';
-import template = require('lodash.template');
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const lodash = require('lodash');
 import { Response } from 'got';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const xmldoc: any = require('xmldoc');
@@ -83,7 +84,7 @@ export class AdfsCredentials implements IAuthResolver {
   }
 
   private postTokenData(samlAssertion: SamlAssertion): Promise<[string, Response<string>]> {
-    const result: string = template(adfsSamlTokenTemplate)({
+    const result: string = lodash.template(adfsSamlTokenTemplate)({
       created: samlAssertion.notBefore,
       expires: samlAssertion.notAfter,
       relyingParty: this._authOptions.relyingParty,

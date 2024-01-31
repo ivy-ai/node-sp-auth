@@ -1,7 +1,8 @@
 import * as url from 'url';
 import { request } from './../../config';
 import * as cookie from 'cookie';
-import template = require('lodash.template');
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const lodash = require('lodash');
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const xmldoc: any = require('xmldoc');
@@ -132,7 +133,7 @@ export class OnlineUserCredentials extends OnlineResolver {
 
         const siteUrlParsed: url.Url = url.parse(this._siteUrl);
         const rootSiteUrl: string = siteUrlParsed.protocol + '//' + siteUrlParsed.host;
-        const tokenRequest: string = template(onlineSamlWsfedAdfsTemplate)({
+        const tokenRequest: string = lodash.template(onlineSamlWsfedAdfsTemplate)({
           endpoint: rootSiteUrl,
           token: samlAssertion.value
         });
@@ -153,7 +154,7 @@ export class OnlineUserCredentials extends OnlineResolver {
     const host: string = parsedUrl.host;
     const spFormsEndPoint = `${parsedUrl.protocol}//${host}/${consts.FormsPath}`;
 
-    const samlBody: string = template(onlineSamlWsfedTemplate)({
+    const samlBody: string = lodash.template(onlineSamlWsfedTemplate)({
       username: this._authOptions.username,
       password: this._authOptions.password,
       endpoint: spFormsEndPoint

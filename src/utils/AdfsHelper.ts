@@ -1,6 +1,7 @@
 import { request } from './../config';
 import * as url from 'url';
-import template = require('lodash.template');
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const lodash = require('lodash');
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const xmldoc: any = require('xmldoc');
 
@@ -14,7 +15,7 @@ export class AdfsHelper {
     const adfsHost: string = url.parse(credentials.adfsUrl).host;
     const usernameMixedUrl = `https://${adfsHost}/adfs/services/trust/13/usernamemixed`;
 
-    const samlBody: string = template(adfsSamlWsfedTemplate)({
+    const samlBody: string = lodash.template(adfsSamlWsfedTemplate)({
       to: usernameMixedUrl,
       username: credentials.username,
       password: credentials.password,

@@ -1,7 +1,8 @@
 import * as url from 'url';
 import { request } from './../../config';
 import * as cookie from 'cookie';
-import template = require('lodash.template');
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const lodash = require('lodash');
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const xmldoc: any = require('xmldoc');
@@ -35,7 +36,7 @@ export class OnpremiseFbaCredentials implements IAuthResolver {
       });
     }
 
-    const soapBody: string = template(fbaLoginWsfedTemplate)({
+    const soapBody: string = lodash.template(fbaLoginWsfedTemplate)({
       username: this._authOptions.username,
       password: this._authOptions.password
     });
