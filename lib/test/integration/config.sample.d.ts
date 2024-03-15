@@ -1,0 +1,14 @@
+import { IUserCredentials, IOnpremiseUserCredentials, IOnpremiseFbaCredentials, IOnPremiseAddinCredentials, IOnlineAddinCredentials, IAdfsUserCredentials } from './../../src/auth/IAuthOptions';
+export declare const onlineUrl = "[sharepoint online url]";
+export declare const onpremAdfsEnabledUrl = "[sharepint on premise url with adfs configured]";
+export declare const onpremNtlmEnabledUrl = "[sharepint on premise url with ntlm]";
+export declare const onpremFbaEnabledUrl = "[sharepint on premise url with fba auth]";
+export declare const onlineCreds: IUserCredentials;
+export declare const onlineWithAdfsCreds: IUserCredentials;
+export declare const onpremCreds: IOnpremiseUserCredentials;
+export declare const onpremUpnCreds: IOnpremiseUserCredentials;
+export declare const onpremUserWithDomainCreds: IOnpremiseUserCredentials;
+export declare const onpremFbaCreds: IOnpremiseFbaCredentials;
+export declare const onpremAddinOnly: IOnPremiseAddinCredentials;
+export declare const onlineAddinOnly: IOnlineAddinCredentials;
+export declare const adfsCredentials: IAdfsUserCredentials;
